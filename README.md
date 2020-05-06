@@ -1,1 +1,1 @@
-# katalon-studio-webinar-demo-circleci-orb
+# For CircleCI webinar demo
