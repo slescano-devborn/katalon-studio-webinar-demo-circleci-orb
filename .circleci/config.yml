@@ -1,9 +1,10 @@
 version: 2.1
 orbs:
-    katalonstudio: katalon/katalonstudio@9.0.0
+    katalonstudio: katalon/katalonstudio@23.0.8
 
 environment:
   KATALON_API_KEY: $KATALON_API_KEY
+  
 workflows:
   build:
     jobs:
