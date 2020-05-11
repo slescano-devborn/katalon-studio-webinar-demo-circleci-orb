@@ -4,7 +4,6 @@ orbs:
 
 environment:
   KATALON_API_KEY: $KATALON_API_KEY
-  
 workflows:
   build:
     jobs:
