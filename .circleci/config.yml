@@ -13,7 +13,7 @@ jobs:
           command: |
             git push --force https://heroku:c3631a7f-fa25-43d5-9489-69e66286c978@git.heroku.com/webinar-demo-kat-staging.git master
   test:
-    jobs:
+    steps:
         - katalon-studio/run:
                 version: "latest"
                 command_arguments: '-browserType="Chrome" -retry=2 -statusDelay=15 -testSuitePath="Test Suites/TS_RegressionTest"'
