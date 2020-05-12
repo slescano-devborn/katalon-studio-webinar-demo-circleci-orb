@@ -36,7 +36,7 @@ workflows:
   build_and_test:
     jobs:
       - build
-      - katalonstudio/run:
+      - katalon-studio/run:
           requires:
             - build
       - deploy:
