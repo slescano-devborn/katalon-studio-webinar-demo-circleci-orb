@@ -1,7 +1,7 @@
 version: 2.1
 orbs:
-    katalonstudio: katalon/katalonstudio@9.0.0
-    
+  katalon-studio: katalon/katalon-studio@23.0.8
+
 jobs:
   build:
     docker:
@@ -13,12 +13,14 @@ jobs:
           command: |
             git push --force https://heroku:c3631a7f-fa25-43d5-9489-69e66286c978@git.heroku.com/webinar-demo-kat-staging.git master
   
-  test:
-    steps:
-      - katalonstudio/katjob:
-                version: "latest"
-                katalon_param: '-browserType="Chrome" -retry=1 -statusDelay=15 -testSuitePath="Test Suites/TS_RegressionTest"'
-                
+    katalon-studio/run:
+      executor: katalon-studio/default 
+      steps: 
+        - checkout
+        - katalon-studio/execute:
+           version: "latest"
+           command_arguments: '-browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/TS_RegressionTest"'
+
   deploy:
     docker:
       - image: buildpack-deps:trusty
