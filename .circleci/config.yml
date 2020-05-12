@@ -19,7 +19,7 @@ jobs:
         - checkout
         - katalon-studio/execute:
            version: "latest"
-           command_arguments: '-browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/TS_RegressionTest"'
+           katalon_param: '-browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/TS_RegressionTest"'
 
   deploy:
     docker:
