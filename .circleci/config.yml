@@ -13,14 +13,6 @@ jobs:
           command: |
             git push --force https://heroku:c3631a7f-fa25-43d5-9489-69e66286c978@git.heroku.com/webinar-demo-kat-staging.git master
   
-  katalon-studio/run:
-      executor: katalon-studio/default 
-      steps: 
-        - checkout
-        - katalon-studio/execute:
-           version: "latest"
-           command_arguments: '-browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/TS_RegressionTest"'
-
   deploy:
     docker:
       - image: buildpack-deps:trusty
@@ -39,6 +31,9 @@ workflows:
       - katalon-studio/run:
           requires:
             - build
+          version: "latest"
+          command_arguments: '-browserType="Chrome" -retry=3 -statusDelay=16 -testSuitePath="Test Suites/TS_RegressionTest"'
+          
       - deploy:
           requires:
             - katalon-studio/run
