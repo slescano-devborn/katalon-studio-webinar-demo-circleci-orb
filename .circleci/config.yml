@@ -4,14 +4,15 @@ orbs:
 
 workflows:
   build:
-    docker:
-      - image: buildpack-deps:trusty
-    steps:
-      - checkout
-      - run:
-          name: Deploy Master to Heroku
-          command: |
-            git push --force https://heroku:c3631a7f-fa25-43d5-9489-69e66286c978@git.heroku.com/webinar-demo-kat-staging.git master
+    jobs:
+        docker:
+          - image: buildpack-deps:trusty
+        steps:
+          - checkout
+          - run:
+              name: Deploy Master to Heroku
+              command: |
+                git push --force https://heroku:c3631a7f-fa25-43d5-9489-69e66286c978@git.heroku.com/webinar-demo-kat-staging.git master
   test:
     jobs:
         - katalonstudio/katjob:
@@ -19,12 +20,13 @@ workflows:
                 katalon_param: '-browserType="Chrome" -retry=1 -statusDelay=15 -testSuitePath="Test Suites/TS_RegressionTest"'
                 
   deploy:
-    docker:
-      - image: buildpack-deps:trusty
-      
-    steps:
-      - checkout
-      - run:
-          name: Deploy Master to Heroku
-          command: |
-            git push --force https://heroku:c3631a7f-fa25-43d5-9489-69e66286c978@git.heroku.com/webinar-demo-kat-production.git master
+    jobs:
+        docker:
+          - image: buildpack-deps:trusty
+
+        steps:
+          - checkout
+          - run:
+              name: Deploy Master to Heroku
+              command: |
+                git push --force https://heroku:c3631a7f-fa25-43d5-9489-69e66286c978@git.heroku.com/webinar-demo-kat-production.git master
