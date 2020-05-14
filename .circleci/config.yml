@@ -9,7 +9,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Deploy Master to Heroku
+          name: Deploy to Staging Environment
           command: |
             git push --force https://heroku:c3631a7f-fa25-43d5-9489-69e66286c978@git.heroku.com/webinar-demo-kat-staging.git master
   
@@ -20,7 +20,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Deploy Master to Heroku
+          name: Deploy to Production Environment
           command: |
             git push --force https://heroku:c3631a7f-fa25-43d5-9489-69e66286c978@git.heroku.com/webinar-demo-kat-production.git master
 workflows:
